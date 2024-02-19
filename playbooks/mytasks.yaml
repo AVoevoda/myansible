@@ -1,0 +1,31 @@
+- hosts: k8snodes
+  become_user: root
+  become: true
+  any_errors_fatal: true
+  vars:
+       array_ip_hosts: 123
+  # roles:
+  #   - role: ansible-scylla-node
+  
+  tasks:
+    # - name: Update and upgrade apt packages
+    #   become: true
+    #   apt:
+    #     upgrade: yes
+    #     update_cache: yes
+    #     cache_valid_time: 86400 #One day
+    - name: Install a list of packages
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - htop
+        - nload
+    # - name: save all facts to host specific file
+    #   copy:
+    #     content: "{{ ansible_facts }}"
+    #     dest: "{{ ansible_fqdn }}.json"
+    #   delegate_to: localhost
+
+    - name: Print version1
+      debug: msg="{{ ansible_facts }}"

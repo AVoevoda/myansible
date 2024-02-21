@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-deployment
+  name: zalupaartem-deployment
   labels:
     xxx: xxxxxasd
-    app: hello-world
+    app: zalupaartem
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-world
+      app: zalupaartem
   template:
     metadata:
       labels:
-        app: hello-world
+        app: zalupaartem
         zalupa: xxx
     spec:
       containers:
-        - name: hello-world
+        - name: zalupaartem
           volumeMounts:
             - name: config
               mountPath: "/config"
@@ -66,19 +66,19 @@ spec:
             - name: PLAYER_INITIAL_LIVES # Notice that the case is different here
               valueFrom:
                 configMapKeyRef:
-                  name: helloworld # The ConfigMap this value comes from.
+                  name: zalupaartem1 # The ConfigMap this value comes from.
                   key: player_initial_lives # The key to fetch.
             - name: UI_PROPERTIES_FILE_NAME
               valueFrom:
                 configMapKeyRef:
-                  name: helloworld
+                  name: zalupaartem1
                   key: ui_properties_file_name
       volumes:
         # You set volumes at the Pod level, then mount them into containers inside that Pod
         - name: config
           configMap:
             # Provide the name of the ConfigMap you want to mount.
-            name: helloworld
+            name: zalupaartem1
             # An array of keys from the ConfigMap to create as files
             items:
               - key: "game.properties"

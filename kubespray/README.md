@@ -27,7 +27,7 @@ then run the following steps:
 cp -rfp inventory/sample inventory/mycluster
 
 # Update Ansible inventory file with inventory builder
-declare -a IPS=(192.168.88.219 192.168.88.220 192.168.88.221 192.168.88.223 192.168.88.224)
+declare -a IPS=(192.168.88.212 192.168.88.213 192.168.88.214 192.168.88.215 192.168.88.216)
 CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 
 # Review and change parameters under ``inventory/mycluster/group_vars``

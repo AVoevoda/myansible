@@ -27,7 +27,7 @@ then run the following steps:
 cp -rfp inventory/sample inventory/mycluster
 
 # Update Ansible inventory file with inventory builder
-declare -a IPS=(192.168.88.212 192.168.88.213 192.168.88.214 192.168.88.215 192.168.88.216)
+declare -a IPS=(192.168.88.211 192.168.88.220 192.168.88.221 192.168.88.223 192.168.88.224)
 CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 
 # Review and change parameters under ``inventory/mycluster/group_vars``
@@ -45,7 +45,7 @@ ansible-playbook -i inventory/mycluster/hosts.yaml  --become --become-user=root 
 # The option `--become` is required, as for example writing SSL keys in /etc/,
 # installing packages and interacting with various systemd daemons.
 # Without --become the playbook will fail to run!
-ansible-playbook -i inventory/mycluster/hosts.yaml  --become --become-user=root cluster.yml
+ansible-playbook -i inventory/mycluster/hosts.yaml  --become --become-user=root cluster.yml -u ansible -i ~/.ssh/id_rsa
 ```
 
 Note: When Ansible is already installed via system packages on the control node,

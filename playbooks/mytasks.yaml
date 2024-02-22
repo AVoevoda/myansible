@@ -8,6 +8,8 @@
   #   - role: ansible-scylla-node
   
   tasks:
+    - name: Print version1
+      debug: msg="{{ ansible_facts }}"
     # - name: Update and upgrade dnf packages
     #   become: true
     #   dnf:
@@ -15,7 +17,7 @@
     #     update_cache: yes
     #     cache_valid_time: 86400 #One day
     - name: Install a list of packages
-      dnf:
+      apt:
         name: "{{ packages }}"
       vars:
         packages:
@@ -28,5 +30,3 @@
     #     dest: "{{ ansible_fqdn }}.json"
     #   delegate_to: localhost
 
-    - name: Print version1
-      debug: msg="{{ ansible_facts }}"

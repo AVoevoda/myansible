@@ -9,3 +9,5 @@ kubectl taint nodes k8s-master2 node-role.kubernetes.io/master=:NoSchedule
 kubectl taint nodes k8s-master3 node-role.kubernetes.io/master=:NoSchedule
 
 kubectl create deployment multitool --image=praqma/network-multitool
+
+/etc/kubernetes/admin.conf -> kubectl cfg ~/.kube/config

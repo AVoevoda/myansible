@@ -1,23 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zalupaartem-deployment
+  name: myservice-deployment
   labels:
     xxx: xxxxxasd
-    app: zalupaartem
+    app: myservice
 spec:
-  replicas: 1
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   selector:
     matchLabels:
-      app: zalupaartem
+      app: myservice
   template:
     metadata:
       labels:
-        app: zalupaartem
+        app: myservice
         zalupa: xxx
+        ifif: xyi
+        xxx: aaa
     spec:
       containers:
-        - name: zalupaartem
+        - name: myservice
           volumeMounts:
             - name: config
               mountPath: "/config"
@@ -61,24 +68,24 @@ spec:
                 fieldRef:
                   apiVersion: v1
                   fieldPath: metadata.namespace
-            - name: zalupaartem
+            - name: myservice
               value: xxxxabna
             - name: PLAYER_INITIAL_LIVES # Notice that the case is different here
               valueFrom:
                 configMapKeyRef:
-                  name: zalupaartem1 # The ConfigMap this value comes from.
+                  name: myservice1 # The ConfigMap this value comes from.
                   key: player_initial_lives # The key to fetch.
             - name: UI_PROPERTIES_FILE_NAME
               valueFrom:
                 configMapKeyRef:
-                  name: zalupaartem1
+                  name: myservice1
                   key: ui_properties_file_name
       volumes:
         # You set volumes at the Pod level, then mount them into containers inside that Pod
         - name: config
           configMap:
             # Provide the name of the ConfigMap you want to mount.
-            name: zalupaartem1
+            name: myservice1
             # An array of keys from the ConfigMap to create as files
             items:
               - key: "game.properties"

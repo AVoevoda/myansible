@@ -1,19 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: zalupaartem-ingress
+  name: myservice-ingress
   # annotations:
   #   nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
-    - host: zalupaartem.info
+    - host: myservice.info
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: zalupaartem-service
+                name: myservice-service
                 port:
                   number: 443
   ingressClassName: nginx

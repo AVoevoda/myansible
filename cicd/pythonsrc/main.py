@@ -6,8 +6,9 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
     return "is flask"
+    
 @app.route("/test")
-def hello():
+def test():
     return "test"
 
 

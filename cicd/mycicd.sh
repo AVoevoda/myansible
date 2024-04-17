@@ -1,6 +1,6 @@
 #!/bin/bash
 dockerhubrepo=avoevoda/mypython3
-version=latestv6
+version=latestv8
 
 
 echo "start docker build $dockerhubrepo:$version"

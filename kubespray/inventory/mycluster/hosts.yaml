@@ -1,42 +1,23 @@
 all:
   hosts:
-    k8s-master-03:
-      ansible_host: 192.168.88.132
-      ip: 192.168.88.132
-      access_ip: 192.168.88.132
-    k8s-master-02:
-      ansible_host: 192.168.88.131
-      ip: 192.168.88.131
-      access_ip: 192.168.88.131
-    k8s-worker-02:
-      ansible_host: 192.168.88.129
-      ip: 192.168.88.129
-      access_ip: 192.168.88.129
     k8s-worker-01:
-      ansible_host: 192.168.88.128
-      ip: 192.168.88.128
-      access_ip: 192.168.88.128
+      ansible_host: 192.169.0.150
+      ip: 192.169.0.150
+      access_ip: 192.169.0.150
     k8s-master-01:
-      ansible_host: 192.168.88.130
-      ip: 192.168.88.130
-      access_ip: 192.168.88.130
+      ansible_host: 192.169.0.160
+      ip: 192.169.0.160
+      access_ip: 192.169.0.160
   children:
     kube_control_plane:
       hosts:
-        k8s-master-03:
-        k8s-master-02:
         k8s-master-01:
     kube_node:
       hosts:
-        k8s-master-03:
-        k8s-master-02:
-        k8s-worker-02:
         k8s-worker-01:
         k8s-master-01:
     etcd:
       hosts:
-        k8s-master-03:
-        k8s-master-02:
         k8s-master-01:
     k8s_cluster:
       children:

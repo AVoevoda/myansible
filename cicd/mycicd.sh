@@ -1,10 +1,10 @@
 #!/bin/bash
-dockerhubrepo=avoevoda/mypython3
+dockerhubrepo=hammerhed953/hammerhed953
 version=latestv8
 
 
 echo "start docker build $dockerhubrepo:$version"
-docker build -t $dockerhubrepo:$version .
+docker build -t $dockerhubrepo:$version -f DockerFile .
 echo "start docker push $dockerhubrepo:$version"
 docker push $dockerhubrepo:$version
 
